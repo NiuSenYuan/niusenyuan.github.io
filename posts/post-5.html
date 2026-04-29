@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 用法总结 - 我的博客</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../index.html">我的博客</a></h1>
+            <p class="site-tagline">记录学习与生活的点滴</p>
+        </div>
+    </header>
+
+    <main class="container" style="display:block; max-width:800px; margin-top:32px;">
+        <a href="../index.html" class="back-link">← 返回首页</a>
+        <article class="post-full">
+            <header class="post-full-header">
+                <h1 class="post-full-title">Markdown 用法总结</h1>
+                <div class="post-full-meta">
+                    <span>📅 2026-04-29</span>
+                    <span>✍️ 博主</span>
+                    <span>⏱ 7 分钟阅读</span>
+                </div>
+                <div class="post-card-tags" style="margin-top:12px;">
+                    <span class="tag">Markdown</span>
+                    <span class="tag">教程</span>
+                    <span class="tag">写作</span>
+                </div>
+            </header>
+            <div class="post-content">
+                <p>Markdown 是一种轻量级标记语言，由 John Gruber 于 2004 年创建。它以纯文本的形式编写，可以轻松转换为 HTML。因其简洁易读的语法，被广泛应用于博客写作、项目文档、论坛帖子等场景。</p>
+
+                <h2>标题</h2>
+                <p>使用 <code>#</code> 号标记标题，一个 <code>#</code> 表示一级标题，依次类推，共支持六级标题：</p>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题</code></pre>
+                <p>另一种方式是使用 <code>=</code> 和 <code>-</code> 分别标记一级和二级标题：</p>
+<pre><code>一级标题
+=======
+
+二级标题
+-------</code></pre>
+
+                <h2>段落与换行</h2>
+                <p>段落之间用空行分隔。在行末添加两个或以上空格再回车可以实现换行，也可以在行末使用 <code>&lt;br&gt;</code> 标签。</p>
+
+                <h2>文本样式</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>效果</th>
+                            <th>语法</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>粗体</strong></td>
+                            <td><code>**粗体**</code> 或 <code>__粗体__</code></td>
+                        </tr>
+                        <tr>
+                            <td><em>斜体</em></td>
+                            <td><code>*斜体*</code> 或 <code>_斜体_</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>粗斜体</em></strong></td>
+                            <td><code>***粗斜体***</code></td>
+                        </tr>
+                        <tr>
+                            <td><del>删除线</del></td>
+                            <td><code>~~删除线~~</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>行内代码</code></td>
+                            <td><code>`行内代码`</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>列表</h2>
+
+                <h3>无序列表</h3>
+                <p>使用 <code>-</code>、<code>*</code> 或 <code>+</code> 作为标记：</p>
+<pre><code>- 项目一
+- 项目二
+  - 子项目 2.1
+  - 子项目 2.2
+- 项目三</code></pre>
+
+                <h3>有序列表</h3>
+                <p>使用数字加 <code>.</code> 作为标记，数字顺序不影响最终渲染：</p>
+<pre><code>1. 第一步
+2. 第二步
+   1. 子步骤 2.1
+   2. 子步骤 2.2
+3. 第三步</code></pre>
+
+                <h3>任务列表</h3>
+<pre><code>- [x] 已完成的任务
+- [ ] 待完成的任务
+- [ ] 另一个待办事项</code></pre>
+
+                <h2>链接与图片</h2>
+
+                <h3>链接</h3>
+<pre><code>[链接文字](https://example.com)
+[链接文字](https://example.com "鼠标悬停提示")
+
+引用式链接：
+[GitHub][1]
+
+[1]: https://github.com</code></pre>
+
+                <h3>图片</h3>
+<pre><code>![替代文字](图片URL)
+![替代文字](图片URL "图片标题")</code></pre>
+                <p>也可以使用 HTML 标签来控制图片大小：</p>
+<pre><code>&lt;img src="image.png" width="400" alt="描述"&gt;</code></pre>
+
+                <h2>引用</h2>
+                <p>使用 <code>&gt;</code> 来表示引用，支持嵌套引用：</p>
+<pre><code>&gt; 这是一条引用
+&gt;
+&gt; &gt; 这是嵌套引用
+&gt;
+&gt; 回到第一层引用</code></pre>
+
+                <blockquote>
+                    这是一条引用
+                    <blockquote>这是嵌套引用</blockquote>
+                    回到第一层引用
+                </blockquote>
+
+                <h2>代码块</h2>
+                <p>使用三个反引号 <code>```</code> 包裹代码，并可以指定语言以获得语法高亮：</p>
+<pre><code>```python
+def hello():
+    print("Hello, World!")
+```
+
+```javascript
+console.log("Hello, World!");
+```
+
+```bash
+echo "Hello, World!"
+```</code></pre>
+
+                <h2>表格</h2>
+                <p>使用 <code>|</code> 分隔列，使用 <code>-</code> 分隔表头与内容。冒号用于控制对齐方向：</p>
+<pre><code>| 左对齐 | 居中对齐 | 右对齐 |
+| :----- | :------: | -----: |
+| 内容   | 内容     | 内容   |
+| 数据   | 数据     | 数据   |</code></pre>
+
+                <h2>水平分隔线</h2>
+                <p>使用三个或以上的 <code>---</code>、<code>***</code> 或 <code>___</code>：</p>
+<pre><code>---
+
+***
+
+___</code></pre>
+
+                <h2>脚注</h2>
+<pre><code>这是一个带有脚注的句子[^1]
+
+[^1]: 这是脚注的内容。</code></pre>
+
+                <h2>HTML 标签</h2>
+                <p>Markdown 支持直接嵌入 HTML 标签，当 Markdown 语法无法满足需求时可以灵活使用：</p>
+<pre><code>&lt;details&gt;
+&lt;summary&gt;点击展开&lt;/summary&gt;
+
+隐藏的内容在这里
+&lt;/details&gt;</code></pre>
+
+                <h2>转义字符</h2>
+                <p>当需要使用 Markdown 保留字符本身时，使用反斜杠 <code>\</code> 进行转义：</p>
+<pre><code>\* 不是斜体 \*
+\# 不是标题
+\` 不是行内代码</code></pre>
+
+                <h2>常用工具推荐</h2>
+                <ul>
+                    <li><strong>Typora</strong>：所见即所得的 Markdown 编辑器，支持即时渲染</li>
+                    <li><strong>VS Code</strong>：通过插件提供 Markdown 编辑和预览功能</li>
+                    <li><strong>Obsidian</strong>：知识管理利器，支持双向链接和关系图谱</li>
+                    <li><strong>Markdown Here</strong>：浏览器扩展，可在网页中即时转换 Markdown</li>
+                    <li><strong>Pandoc</strong>：命令行工具，支持 Markdown 与多种文档格式的相互转换</li>
+                </ul>
+
+                <h2>扩展语法（GFM）</h2>
+                <p>GitHub Flavored Markdown（GFM）是最广泛使用的 Markdown 变体，在标准语法基础上添加了以下特性：</p>
+                <ul>
+                    <li><strong>表格</strong>：上文已介绍</li>
+                    <li><strong>任务列表</strong>：上文已介绍</li>
+                    <li><strong>删除线</strong>：上文已介绍</li>
+                    <li><strong>自动链接</strong>：直接输入 URL 会自动转换为链接</li>
+                    <li><strong>代码块语法高亮</strong>：上文已介绍</li>
+                </ul>
+
+                <h2>总结</h2>
+                <p>Markdown 语法简单直观，几分钟就能上手。它的核心优势在于——用纯文本编写，却可以生成格式丰富的 HTML 文档。无论你是写博客、做笔记、维护项目文档，还是参与开源社区，掌握 Markdown 都是一项必备技能。</p>
+                <p>记住这个原则：<strong>当你专注于内容而非排版时，Markdown 就是最好的写作工具。</strong></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 My Blog. Powered by <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>

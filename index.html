@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客 / My Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="index.html">我的博客</a></h1>
+            <p class="site-tagline">记录学习与生活的点滴</p>
+            <nav class="site-nav">
+                <a href="index.html" class="active">首页</a>
+                <a href="#about">关于</a>
+                <a href="#archives">归档</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="post-list" id="post-list">
+            <div class="loading">加载中...</div>
+        </section>
+
+        <aside class="sidebar" id="sidebar">
+            <div class="widget" id="about">
+                <h3>关于我</h3>
+                <p>一个热爱技术、喜欢折腾的开发者。在这里记录学习心得、项目经验和技术探索。</p>
+            </div>
+            <div class="widget">
+                <h3>标签</h3>
+                <div class="tag-cloud" id="tag-cloud"></div>
+            </div>
+            <div class="widget" id="archives">
+                <h3>归档</h3>
+                <ul class="archive-list" id="archive-list"></ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 My Blog. Powered by <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

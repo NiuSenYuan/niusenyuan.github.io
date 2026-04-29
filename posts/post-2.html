@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python 异步编程入门 - 我的博客</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../index.html">我的博客</a></h1>
+            <p class="site-tagline">记录学习与生活的点滴</p>
+        </div>
+    </header>
+
+    <main class="container" style="display:block; max-width:800px; margin-top:32px;">
+        <a href="../index.html" class="back-link">← 返回首页</a>
+        <article class="post-full">
+            <header class="post-full-header">
+                <h1 class="post-full-title">Python 异步编程入门：从回调到 async/await</h1>
+                <div class="post-full-meta">
+                    <span>📅 2026-04-25</span>
+                    <span>✍️ 博主</span>
+                    <span>⏱ 8 分钟阅读</span>
+                </div>
+                <div class="post-card-tags" style="margin-top:12px;">
+                    <span class="tag">Python</span>
+                    <span class="tag">异步</span>
+                    <span class="tag">编程</span>
+                </div>
+            </header>
+            <div class="post-content">
+                <p>异步编程是现代 Python 开发中不可或缺的技能。无论是 Web 服务器、网络爬虫还是数据处理，合理使用异步编程都能显著提升性能。</p>
+
+                <h2>为什么需要异步？</h2>
+                <p>在传统的同步编程中，程序会按顺序执行每一行代码。当一个操作需要等待 I/O（如网络请求、文件读写）时，整个程序会被阻塞，浪费大量的 CPU 时间。</p>
+                <p>异步编程允许程序在等待 I/O 操作时切换到其他任务，从而充分利用 CPU 资源。</p>
+
+                <h2>基础概念</h2>
+
+                <h3>协程 (Coroutine)</h3>
+                <p>协程是使用 <code>async def</code> 定义的函数。调用协程函数会返回一个协程对象，需要用 <code>await</code> 或事件循环来执行它。</p>
+<pre><code>import asyncio
+
+async def greet(name):
+    await asyncio.sleep(1)
+    return f"Hello, {name}!"
+
+async def main():
+    result = await greet("World")
+    print(result)
+
+asyncio.run(main())  # 输出: Hello, World!</code></pre>
+
+                <h3>并发执行多个协程</h3>
+                <p>使用 <code>asyncio.gather()</code> 可以并发运行多个协程：</p>
+<pre><code>import asyncio
+import time
+
+async def fetch_data(id, delay):
+    await asyncio.sleep(delay)
+    return f"Data from {id}"
+
+async def main():
+    start = time.time()
+    results = await asyncio.gather(
+        fetch_data("A", 2),
+        fetch_data("B", 1),
+        fetch_data("C", 3),
+    )
+    elapsed = time.time() - start
+    print(results)
+    print(f"耗时: {elapsed:.1f}s")  # 约 3s，而非 6s
+
+asyncio.run(main())</code></pre>
+
+                <h2>实战：异步 HTTP 请求</h2>
+                <p>使用 <code>aiohttp</code> 库进行异步 HTTP 请求：</p>
+<pre><code>import asyncio
+import aiohttp
+
+async def fetch(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+
+async def main():
+    urls = [
+        "https://httpbin.org/delay/2",
+        "https://httpbin.org/delay/1",
+    ]
+    results = await asyncio.gather(*[fetch(u) for u in urls])
+    print(f"获取了 {len(results)} 个页面")
+
+asyncio.run(main())</code></pre>
+
+                <h2>常见陷阱</h2>
+                <ul>
+                    <li><strong>不要在协程中使用阻塞操作</strong>：如 <code>time.sleep()</code> 会阻塞事件循环，应使用 <code>await asyncio.sleep()</code></li>
+                    <li><strong>注意异常处理</strong>：使用 <code>try/except</code> 包裹 <code>await</code> 表达式</li>
+                    <li><strong>合理设置并发数</strong>：使用 <code>asyncio.Semaphore</code> 限制并发数量</li>
+                </ul>
+
+                <h2>总结</h2>
+                <p>Python 的 async/await 语法让异步编程变得简单直观。掌握它，你就能写出高效、响应迅速的 Python 程序。</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 My Blog. Powered by <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>

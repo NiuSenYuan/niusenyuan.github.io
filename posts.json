@@ -1,0 +1,38 @@
+[
+    {
+        "title": "使用 GitHub Pages 搭建个人博客",
+        "url": "posts/post-1.html",
+        "date": "2026-04-28",
+        "author": "博主",
+        "readTime": 5,
+        "excerpt": "GitHub Pages 是一个免费的静态网站托管服务，非常适合搭建个人博客。本文将介绍如何从零开始搭建并部署。",
+        "tags": ["GitHub", "教程", "博客搭建"]
+    },
+    {
+        "title": "Python 异步编程入门：从回调到 async/await",
+        "url": "posts/post-2.html",
+        "date": "2026-04-25",
+        "author": "博主",
+        "readTime": 8,
+        "excerpt": "异步编程是 Python 进阶的重要主题。本文带你从基础的协程概念开始，逐步深入理解 async/await 的使用方式。",
+        "tags": ["Python", "异步", "编程"]
+    },
+    {
+        "title": "Git 工作流程最佳实践",
+        "url": "posts/post-3.html",
+        "date": "2026-04-20",
+        "author": "博主",
+        "readTime": 6,
+        "excerpt": "掌握 Git 的分支管理、提交规范和团队协作流程，让版本管理成为一种享受而非负担。",
+        "tags": ["Git", "DevOps", "工具"]
+    },
+    {
+        "title": "CSS Grid 布局完全指南",
+        "url": "posts/post-4.html",
+        "date": "2026-04-15",
+        "author": "博主",
+        "readTime": 10,
+        "excerpt": "CSS Grid 是现代网页布局的利器。本文从基础到进阶，全面讲解 Grid 布局的核心概念和实际应用。",
+        "tags": ["CSS", "前端", "Web"]
+    }
+]

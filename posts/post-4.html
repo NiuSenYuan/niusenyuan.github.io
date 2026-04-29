@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid 布局完全指南 - 我的博客</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../index.html">我的博客</a></h1>
+            <p class="site-tagline">记录学习与生活的点滴</p>
+        </div>
+    </header>
+
+    <main class="container" style="display:block; max-width:800px; margin-top:32px;">
+        <a href="../index.html" class="back-link">← 返回首页</a>
+        <article class="post-full">
+            <header class="post-full-header">
+                <h1 class="post-full-title">CSS Grid 布局完全指南</h1>
+                <div class="post-full-meta">
+                    <span>📅 2026-04-15</span>
+                    <span>✍️ 博主</span>
+                    <span>⏱ 10 分钟阅读</span>
+                </div>
+                <div class="post-card-tags" style="margin-top:12px;">
+                    <span class="tag">CSS</span>
+                    <span class="tag">前端</span>
+                    <span class="tag">Web</span>
+                </div>
+            </header>
+            <div class="post-content">
+                <p>CSS Grid 是 CSS 中最强大的布局系统。与 Flexbox 不同，Grid 是二维的——它同时处理行和列，是构建复杂页面布局的最佳选择。</p>
+
+                <h2>基础概念</h2>
+
+                <h3>网格容器与网格项</h3>
+                <p>要使用 Grid 布局，只需将元素设置为 <code>display: grid</code>：</p>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 16px;
+}</code></pre>
+
+                <p>这创建了一个三列的网格，每列等宽，行高自动，单元格间距 16px。</p>
+
+                <h2>核心属性</h2>
+
+                <h3>grid-template-columns / grid-template-rows</h3>
+                <p>定义网格的列和行轨道：</p>
+<pre><code>/* 三种写法 */
+grid-template-columns: 200px 1fr 2fr;        /* 固定 + 比例 */
+grid-template-columns: repeat(3, 1fr);         /* 三等分 */
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 响应式 */</code></pre>
+
+                <h3>gap</h3>
+                <p>设置行列之间的间距：</p>
+<pre><code>gap: 20px;              /* 行列统一间距 */
+gap: 20px 10px;         /* 行间距 20px, 列间距 10px */
+row-gap: 20px;
+column-gap: 10px;</code></pre>
+
+                <h2>项目定位</h2>
+                <p>通过以下属性控制单个项目的放置：</p>
+<pre><code>.item {
+  grid-column: 1 / 3;      /* 从列线 1 到列线 3（跨两列）*/
+  grid-row: 1 / 2;         /* 从行线 1 到行线 2 */
+  grid-area: 1 / 1 / 2 / 3; /* 简写: row-start / col-start / row-end / col-end */
+}</code></pre>
+
+                <h2>使用 grid-template-areas</h2>
+                <p>也许是最直观的布局方式——用命名区域描述页面结构：</p>
+<pre><code>.layout {
+  display: grid;
+  grid-template-areas:
+    "header  header  header"
+    "sidebar content content"
+    "footer  footer  footer";
+  grid-template-columns: 250px 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer  { grid-area: footer; }</code></pre>
+
+                <p>这就是本博客使用的布局方式！清晰、直观、可维护。</p>
+
+                <h2>对齐方式</h2>
+                <p>Grid 提供了丰富的对齐选项：</p>
+<pre><code>/* 容器级别 */
+justify-items: center;   /* 水平方向 */
+align-items: center;     /* 垂直方向 */
+place-items: center;     /* 简写 */
+
+/* 单个项目 */
+justify-self: end;
+align-self: start;</code></pre>
+
+                <h2>Grid vs Flexbox</h2>
+                <table style="width:100%; border-collapse:collapse; margin-bottom:16px;">
+                    <tr style="background:#f8fafc;">
+                        <th style="padding:8px; border:1px solid var(--border);">特性</th>
+                        <th style="padding:8px; border:1px solid var(--border);">Grid</th>
+                        <th style="padding:8px; border:1px solid var(--border);">Flexbox</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px; border:1px solid var(--border);">维度</td>
+                        <td style="padding:8px; border:1px solid var(--border);">二维（行+列）</td>
+                        <td style="padding:8px; border:1px solid var(--border);">一维（行或列）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px; border:1px solid var(--border);">适用场景</td>
+                        <td style="padding:8px; border:1px solid var(--border);">页面布局</td>
+                        <td style="padding:8px; border:1px solid var(--border);">组件内排列</td>
+                    </tr>
+                </table>
+
+                <blockquote>
+                    <strong>经验法则</strong>：页面整体结构用 Grid，组件内部排列用 Flexbox。两者配合使用效果最佳。
+                </blockquote>
+
+                <h2>总结</h2>
+                <p>CSS Grid 让复杂的网页布局变得简单。掌握 <code>grid-template-areas</code>、<code>fr</code> 单位和 auto-fill/auto-fit 这几个核心概念，你就能应对绝大多数布局需求。</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 My Blog. Powered by <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>
